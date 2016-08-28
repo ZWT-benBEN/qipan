@@ -1,0 +1,141 @@
+html,body{
+  overflow: hidden;
+}
+body{
+ // width:100%;
+ // height: 100%;
+ //background:url("bj.png")
+}
+*{
+  padding:0;
+  margin: 0;
+  list-style: none;
+}
+a{
+
+  display: block;
+  position: absolute;
+  right:0;
+  width: 90px;height: 45px;
+  background-color:rgba(33,33,33,0.8);
+  color: #fff;
+  text-align: center;
+  line-height: 45px;
+  fontsize:18px;
+}
+%center{
+  position: absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom: 0;
+  margin: auto;
+}
+$width:600px;
+.qipan{
+  width: $width;
+  height: $width;
+  background: rgba(00,00,00,0.4);
+  @extend %center;
+}
+.qizi{
+  position: relative;
+  z-index: 2;
+  float:left;
+  width:$width/15 - $width/100;
+  height:$width/15 - $width/100 ;
+  border-radius: 50%;
+  margin:$width/200
+}
+.hei{
+  background: #000;
+}
+.bai{
+  background: #fff;
+}
+@for $i from 0 through 14{
+  .qipan b:nth-of-type(#{$i+1}){
+    top:$width/30 + $i*$width/15
+  }
+}
+.hang{
+  display: block;
+  height:1px;
+  width: $width - $width/15;
+  background:black;
+  position: absolute;
+  left:$width/30;
+  animation: cehua .5s ease forwards;
+}
+@for $i from 0 through 14{
+  .qipan i:nth-of-type(#{$i+1}){
+    left:$width/30 + $i*$width/15
+  }
+}
+.lie{
+  display: block;
+  width:1px;
+  height: $width - $width/15;
+  background:black;
+  position: absolute;
+  top:$width/30;
+}
+.qipan span{
+  display: block;
+  width: $width/60;
+  height:$width/60;
+  background: #000;
+  border-radius: 50%;
+  transform: translate3d(-45%,-45%,0);
+  animation: diaoluo .5s ease forwards;
+  position: absolute;
+  opacity: 0;
+
+  &:nth-of-type(1){
+    top:3.5*$width/15;
+    left:3.5*$width/15;
+  }
+  &:nth-of-type(2){
+    top:3.5*$width/15;
+    left:11.5*$width/15;
+
+  }
+  &:nth-of-type(3){
+    top:7.5*$width/15;
+    left:7.5*$width/15;
+  }
+  &:nth-of-type(4){
+    top:11.5*$width/15;
+    left:3.5*$width/15;
+  }
+  &:nth-of-type(5){
+    top:11.5*$width/15;
+    left:11.5*$width/15;
+  }
+}
+@for $i from 1 through 5{
+  .qipan span:nth-of-type(#{$i}){
+    animation-delay: $i*0.2s;
+  }
+}
+@keyframes diaoluo {
+  0%{
+    transform:translate3d(0,-1000px,0);
+    opacity: 0;
+  }
+  100%{
+    transform:translate3d(-45%,-45%,0);
+    opacity:1;
+  }
+}
+@keyframes cehua {
+  0%{
+    transform:translate3d(-1000px,0,0);
+    opacity: 0;
+  }
+  100%{
+    transform:translate3d(0,0,0);
+    opacity:1;
+  }
+}
+
